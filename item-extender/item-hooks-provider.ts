@@ -4,6 +4,7 @@ import { ItemHooksProvider, ITEM_HOOKS_PROVIDER_TOKEN, DataItem } from "progress
 @Injectable()
 class CustomItemHooksProvider implements ItemHooksProvider {
     onItemLoaded(item: DataItem): void {
+        (item.metadata as any).properties.UrlName["Telerik.Sitefinity.V1.Validation.SanitizeRegex"] = "[^\\p{L}\\-\\!\\$\\(\\)\\=\\@\\d_\\.]+|\\.+$";
         if (item.data) {
             // tslint:disable-next-line:no-console
             console.log(`Item is loaded: ${item.data.Title}`);
